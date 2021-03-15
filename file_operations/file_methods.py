@@ -7,12 +7,8 @@ class File_Operation:
     """
                 This class shall be used to save the model after training
                 and load the saved model for prediction.
-
-                Written By: iNeuron Intelligence
-                Version: 1.0
-                Revisions: None
-
                 """
+
     def __init__(self,file_object,logger_object):
         self.file_object = file_object
         self.logger_object = logger_object
@@ -50,6 +46,7 @@ class File_Operation:
         self.logger_object.log(self.file_object, 'Entered the load_model method of the File_Operation class')
         try:
             f = self.azureObj.loadObject(self.model_directory, filename + '.sav')
+            print('Model Loading Done!')
             self.logger_object.log(self.file_object,'Model File ' + filename + ' loaded. Exited the load_model method of the Model_Finder class')
             return f
         except Exception as e:
@@ -59,6 +56,7 @@ class File_Operation:
             self.logger_object.log(self.file_object,
                                    'Model File ' + filename + ' could not be saved. Exited the load_model method of the Model_Finder class')
             raise Exception()
+
 
     def find_correct_model_file(self,cluster_number):
         """

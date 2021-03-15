@@ -129,35 +129,61 @@ class Preprocessor:
             raise Exception()
 
     def scaleData(self,data):
+        """
+                                                Method Name: scaleData
+                                                Description: This method scales al values in particular range.
+                                                Output: Dataframe after scaled values.
+                                                On Failure: Raise Exception
+        """
+        try:
+            scalar = StandardScaler()
 
-        scalar = StandardScaler()
+            num_data = data[
+                ["elevation", "aspect", "slope", "horizontal_distance_to_hydrology", "Vertical_Distance_To_Hydrology",
+                 "Horizontal_Distance_To_Roadways", "Horizontal_Distance_To_Fire_Points"]]
+            cat_data = data.drop(
+                ["elevation", "aspect", "slope", "horizontal_distance_to_hydrology", "Vertical_Distance_To_Hydrology",
+                 "Horizontal_Distance_To_Roadways", "Horizontal_Distance_To_Fire_Points"], axis=1)
+            scaled_data = scalar.fit_transform(num_data)
 
-        num_data = data[
-            ["elevation", "aspect", "slope", "horizontal_distance_to_hydrology", "Vertical_Distance_To_Hydrology",
-             "Horizontal_Distance_To_Roadways", "Horizontal_Distance_To_Fire_Points"]]
-        cat_data = data.drop(
-            ["elevation", "aspect", "slope", "horizontal_distance_to_hydrology", "Vertical_Distance_To_Hydrology",
-             "Horizontal_Distance_To_Roadways", "Horizontal_Distance_To_Fire_Points"], axis=1)
-        scaled_data = scalar.fit_transform(num_data)
+            num_data = pd.DataFrame(scaled_data, columns=num_data.columns,index=num_data.index)
 
-        num_data = pd.DataFrame(scaled_data, columns=num_data.columns,index=num_data.index)
+            final_data = pd.concat([num_data, cat_data], axis=1)
 
-        final_data = pd.concat([num_data, cat_data], axis=1)
+            return final_data
+        except Exception as e:
+            raise e
 
-        return final_data
 
     def enocdeCategoricalvalues(self,data):
+        """
+                                                        Method Name: enocdeCategoricalvalues
+                                                        Description: This method encodes class data with numerical values
+                                                        Output: Modified Dataframe
+                                                        On Failure: Raise Exception
+        """
+        try:
+            data["class"] = data["class"].map(
+                {"Lodgepole_Pine": 0, "Spruce_Fir": 1, "Douglas_fir": 2, "Krummholz": 3, "Ponderosa_Pine": 4, "Aspen": 5,
+                 "Cottonwood_Willow": 6})
 
-        data["class"] = data["class"].map(
-            {"Lodgepole_Pine": 0, "Spruce_Fir": 1, "Douglas_fir": 2, "Krummholz": 3, "Ponderosa_Pine": 4, "Aspen": 5,
-             "Cottonwood_Willow": 6})
-
-        return data
+            return data
+        except Exception as e:
+            raise e
 
 
     def handleImbalanceDataset(self,X,y):
-        print('Shape Before SMOTE: ', type(X), X.shape)
-        sample = SMOTE()
-        X, y = sample.fit_resample(X, y)
-        print('Shape After SMOTE: ',type(X), X.shape)
-        return X,y
+        """
+                                                        Method Name: handleImbalanceDataset
+                                                        Description: This method enables up-sampling of minority classes.
+                                                        Output: Up-sampled Dataframe
+                                                        On Failure: Raise Exception
+        """
+        try:
+            print('Shape Before SMOTE: ', type(X), X.shape)
+            sample = SMOTE()
+            X, y = sample.fit_resample(X, y)
+            print('Shape After SMOTE: ',type(X), X.shape)
+            return X,y
+        except Exception as e:
+            raise e

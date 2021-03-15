@@ -7,7 +7,7 @@ class dBOperation:
       This class shall be used for handling all the SQL operations.
       """
     def __init__(self):
-        self.path = 'Training_Database/'
+        self.path = 'Training_Database'
         self.badFilePath = "Training_Bad_Raw_Files_Validated"
         self.goodFilePath = "Training_Good_Raw_Files_Validated"
         self.logger = App_Logger()
@@ -76,14 +76,10 @@ class dBOperation:
         self.fileName = 'InputFile.csv'
         log_file = 'ExportToCsv'
         try:
-            print(Database)
-            tmp_csv = self.dbObj.recordsToDataFrame(Database, 'Good_Raw_Data')
-            print(tmp_csv.shape)
-            #tmp_csv = tmp_csv.rename(columns={'Good/Bad': 'Output'})
-            self.azureObj.saveDataframeToCsv('Training_FileFromDB', self.fileName, tmp_csv)
-
-            self.logger.log(log_file, "File exported successfully!!!")
+            tmp_csv = self.dbObj.recordsToDataFrame(Database, 'Pred_God_Raw_Data')
+            self.awsObj.saveDataframeToCsv(self.fileFromDb, self.fileName, tmp_csv)
             print('Saving data to final csv')
+            self.logger.log(log_file, "File exported successfully!!!")
 
         except Exception as e:
             self.logger.log(log_file, "File exporting failed. Error : %s" %e)

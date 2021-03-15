@@ -3,14 +3,18 @@ from Prediction_Raw_Data_Validation.predictionDataValidation import Prediction_D
 from DataTypeValidation_Insertion_Prediction.DataTypeValidationPrediction import dBOperation
 from DataTransformation_Prediction.DataTransformationPrediction import dataTransformPredict
 from application_logging import logger
+from AzureBlobStorage.azureBlobStorage import AzureBlobStorage
+from MongoDB.mongoDbDatabase import mongoDBOperation
 
 class pred_validation:
     def __init__(self,path):
         self.raw_data = Prediction_Data_validation(path)
         self.dataTransform = dataTransformPredict()
         self.dBOperation = dBOperation()
-        self.file_object = open("Prediction_Logs/Prediction_Log.txt", 'a+')
+        self.file_object = 'Prediction_Log'
         self.log_writer = logger.App_Logger()
+        self.azureObj = AzureBlobStorage()
+        self.dbObj = mongoDBOperation()
 
     def prediction_validation(self):
 
@@ -49,7 +53,7 @@ class pred_validation:
             self.log_writer.log(self.file_object,"Validation Operation completed!!")
             self.log_writer.log(self.file_object,"Extracting csv file from table")
             #export data in table to csvfile
-            self.dBOperation.selectingDatafromtableintocsv('Prediction')
+            self.dBOperation.selectingDatafromtableintocsv('forestCoverDB')
 
         except Exception as e:
             raise e

@@ -10,10 +10,6 @@ from datetime import datetime
 class Model_Finder:
     """
                 This class shall  be used to find the model with best accuracy and AUC score.
-                Written By: iNeuron Intelligence
-                Version: 1.0
-                Revisions: None
-
                 """
 
     def __init__(self,file_object,logger_object):

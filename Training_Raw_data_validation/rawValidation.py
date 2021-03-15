@@ -123,7 +123,6 @@ class Raw_Data_validation:
                                                     """
 
         try:
-            path = 'Training_Raw_files_validated/'
             self.azureObj.deleteFolder('Training_Good_Raw_Files_Validated')
         except OSError as s:
             #file = open("Training_Logs/GeneralLog.txt", 'a+')
