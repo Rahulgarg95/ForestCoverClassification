@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8304c17-3ea3-4286-83a7-752408df297d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/best_model_finder/tuner.py" beforeDir="false" afterPath="$PROJECT_DIR$/best_model_finder/tuner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_operations/file_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/file_operations/file_methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trainingModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainingModel.py" afterDir="false" />
-    </list>
+    <list default="true" id="d8304c17-3ea3-4286-83a7-752408df297d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

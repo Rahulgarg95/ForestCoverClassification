@@ -7,7 +7,7 @@ import pandas as pd
 
 class AzureBlobStorage:
     def __init__(self):
-        self.conn_str='DefaultEndpointsProtocol=https;AccountName=forestcoverclass;AccountKey=opC1RsZQ5O3bOYRoVPehd6ghJ+vyneY8QpcXbpDOd15r4FICnBBSMT6o45txXveLUCql7DfD2TeDVwJx8jQzzg==;EndpointSuffix=core.windows.net'
+        #self.conn_str=''
         self.logger = App_Logger()
         self.azure_client = BlobServiceClient.from_connection_string(self.conn_str)
         self.file = 'AzureManagementLogs'

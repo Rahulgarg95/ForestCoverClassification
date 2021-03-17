@@ -6,7 +6,7 @@ from application_logging import logger
 class mongoDBOperation:
     def __init__(self):
         self.mongouser='rahul95'
-        self.mongopasswd='rahul123'
+        self.mongopasswd=''
         #self.connstr="mongodb+srv://{}:{}@python-mongo.enkic.mongodb.net/waferFaultDB?retryWrites=true&w=majority".format(self.mongouser,self.mongopasswd)
         self.connstr='mongodb://localhost:27017/'
         #self.log_writer = logger.App_Logger()
